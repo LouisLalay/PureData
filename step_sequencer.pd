@@ -1,0 +1,63 @@
+#N canvas -1 26 1920 984 12;
+#X obj -1 1 cnv 15 10000 6000 empty empty empty 0 0 0 14 #606060 #404040
+0;
+#X obj 1096 188 + 1;
+#X obj 1038 90 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 1043 271 hradio 16 1 0 16 empty empty empty 0 -8 0 16 #fcfcfc
+#000000 #000000 0;
+#X obj 1038 188 float;
+#X obj 1038 229 mod 16;
+#X obj 1017 327 select 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
+#X floatatom 1174 224 5 0 0 0 - - - 0;
+#X obj 329 436 osc~;
+#X obj 482 711 dac~;
+#X text 155 486 Cables de flux audio;
+#X text 227 408 Cable de Data;
+#X obj 388 438 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 331 363 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 595 422 phasor~;
+#X obj 597 478 *~, f 5;
+#X obj 669 423 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 596 360 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 479 525 +~;
+#X obj 479 558 lop~;
+#X obj 547 533 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 663 652 vline~;
+#X msg 663 602 1 250 \, 0.9 250 250 \, 0 250 750;
+#X obj 329 483 *~, f 5;
+#X obj 481 671 *~, f 5;
+#X floatatom 1322 367 5 0 0 0 - - - 0;
+#X obj 1038 146 metro 160;
+#X floatatom 1097 89 5 0 0 0 - - - 0;
+#X connect 1 0 4 1;
+#X connect 2 0 26 0;
+#X connect 4 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 5 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 4 22 0;
+#X connect 6 16 25 0;
+#X connect 8 0 23 0;
+#X connect 12 0 23 1;
+#X connect 13 0 8 0;
+#X connect 14 0 15 0;
+#X connect 15 0 18 1;
+#X connect 16 0 15 1;
+#X connect 17 0 14 0;
+#X connect 18 0 19 0;
+#X connect 19 0 24 0;
+#X connect 20 0 19 1;
+#X connect 21 0 24 1;
+#X connect 22 0 21 0;
+#X connect 23 0 18 0;
+#X connect 24 0 9 0;
+#X connect 24 0 9 1;
+#X connect 26 0 4 0;
+#X connect 27 0 26 1;

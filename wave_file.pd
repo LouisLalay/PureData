@@ -1,0 +1,36 @@
+#N canvas -1 26 1920 984 12;
+#X obj -8 1 cnv 15 10000 6000 empty empty empty 20 12 0 14 #7c7c7c
+#404040 0;
+#X obj 205 318 readsf~ 2;
+#X obj 206 86 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 206 150 trigger bang bang;
+#X msg 206 199 start;
+#X msg 156 199 stop;
+#X obj 266 385 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 207 386 dac~;
+#X msg 322 199 open schools_out.wav;
+#X obj 155 142 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 614 376 soundfiler;
+#X obj 718 376 table schools_out;
+#X obj 620 440 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 621 473 tabplay~ schools_out;
+#X obj 673 533 dac~;
+#X msg 613 319 read -resize ./schools_out.wav schools_out;
+#X connect 1 0 7 0;
+#X connect 1 1 7 1;
+#X connect 1 2 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 8 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 8 0 1 0;
+#X connect 9 0 5 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 14 1;
+#X connect 15 0 10 0;

@@ -1,0 +1,166 @@
+#N canvas -1 26 1920 984 12;
+#X obj -2 -2 cnv 15 10000 6000 empty empty empty 20 12 0 14 #7c7c7c
+#404040 0;
+#X obj 564 24 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 564 83 metro 1000;
+#X obj 564 156 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 9 125 Difference entre les INLETS : Celui de droite est le
+HOT \, les autres sont COLD. Un INLET HOT envoie l'argument de la fonction
+\, alors que les INLET COLD modifient les paramètres de la fonction
+;
+#X obj 727 26 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X text 719 47 Slider : Ctrl Shift J;
+#X text 503 0 Toggle : Ctrl Shift T;
+#X obj 277 302 osc~;
+#X obj 430 577 dac~;
+#X text 103 352 Cables de flux audio;
+#X text 175 274 Cable de Data;
+#X obj 15 447 tabwrite~ signal;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array signal 100 float 3;
+#A 0 0.214116 0.221019 0.227531 0.233635 0.239313 0.24455 0.249332
+0.253647 0.257485 0.260836 0.263694 0.266053 0.267909 0.26926 0.270108
+0.270452 0.270297 0.269647 0.268511 0.266896 0.264813 0.262274 0.259293
+0.255884 0.252066 0.247855 0.243271 0.238336 0.233072 0.227501 0.221648
+0.215539 0.209199 0.202657 0.195939 0.169226 0.144777 0.122337 0.101682
+0.0826223 0.064992 0.0486499 0.033475 0.0193643 0.0062301 -0.00600148
+-0.0173926 -0.0279951 -0.0378518 -0.0469982 -0.0554631 -0.0632702 -0.0704383
+-0.0769822 -0.0829138 -0.0882418 -0.0929736 -0.0971146 -0.100669 -0.103641
+-0.106034 -0.10785 -0.109093 -0.109765 -0.109872 -0.109417 -0.108406
+-0.106845 -0.104742 -0.102105 -0.0989449 -0.0952714 -0.0910972 -0.0864359
+-0.0813022 -0.0757122 -0.0696834 -0.0632346 -0.0563857 -0.0491578 -0.0415732
+-0.0336552 -0.0254281 -0.0169175 -0.00814947 0.000848896 0.0100499
+0.019425 0.0289453 0.0385815 0.0483037 0.058082 0.0678862 0.0776861
+0.0874514 0.0971521 0.106758 0.116241 0.125571 0.13472;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 79 502 graph;
+#X obj 14 316 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 336 304 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 279 229 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 15 372 metro 100;
+#X text 25 644 Affichage : Ctrl Shift A + Nom du tableau;
+#X obj 543 288 phasor~;
+#X obj 545 344 *~, f 5;
+#X obj 617 289 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 544 226 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 427 391 +~;
+#X obj 427 424 lop~;
+#X obj 495 399 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 611 518 vline~;
+#X text 674 517 Amplificateur \, ici utilisé comme ADSR;
+#X msg 611 468 1 250 \, 0.9 250 250 \, 0 250 750;
+#X obj 277 349 *~, f 5;
+#X obj 429 537 *~, f 5;
+#X obj 690 432 metro 2000;
+#X obj 828 390 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 792 433 Gère le rythme;
+#X obj 1884 947 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 827 450 [Valeur d'arrivée \, Temps de montée] \, [Valeur
+d'arrivée \, Temps de descente \, Temps de maintien avant descente]
+\, [Valeur d'arrivée \, Temps de descente \, Temps de maintien avant
+descente];
+#X obj 952 274 key;
+#X floatatom 952 329 5 0 0 0 - - - 0;
+#X text 959 300 Code ascii des touches;
+#X msg 1069 118 \; pd dsp 0;
+#X msg 1070 167 \; pd dsp 1;
+#X obj 808 149 cnv 15 250 30 empty empty empty 20 12 0 14 #ff0400 #404040
+0;
+#X text 829 155 Interrupteur de volume général;
+#N canvas -1 26 1920 984 adsr 0;
+#X obj 90 194 vline~;
+#X msg 90 144 1 250 \, 0.9 250 250 \, 0 250 750;
+#X obj 169 108 metro 2000;
+#X obj 307 66 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 6 6 Sous patch. Il faut rajouter les entrées/sorties;
+#X obj 97 251 outlet~;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X restore 1330 175 pd adsr;
+#X obj 953 364 mtof;
+#X floatatom 953 413 5 0 0 0 - - - 0;
+#X text 962 389 Conversion MIDI <-> Fréquence;
+#X obj 1386 355 expr ($f1 + 2) + $i2;
+#X floatatom 1386 299 5 0 0 0 - - - 0;
+#X floatatom 1523 297 5 0 0 0 - - - 0;
+#X floatatom 1450 422 5 0 0 0 - - - 0;
+#X text 1487 325 Int;
+#X text 1245 326 Float - Shift click;
+#X obj 1610 176 phasor~ 500;
+#X text 1326 148 Subpatch;
+#X obj 1610 241 expr~ (($v1>0.5) - 0.5)*2;
+#X obj 1610 300 tabwrite~ square;
+#X text 1623 208 Signal;
+#X obj 1508 84 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 1509 140 metro 100;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array square 100 float 1;
+#A 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 -1 -1 -1 -1 -1 -1 -1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
+#X coords 0 1 99 -1 200 140 1;
+#X restore 1603 373 graph;
+#X text 866 631 Utilisation de connecteur "wifi" avec les s et r;
+#X obj 1314 598 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1
+0;
+#X obj 1476 530 s rms_square;
+#X obj 1475 484 env~;
+#X obj 1315 557 r rms_square;
+#X text 1351 508 Root mean square;
+#X text 821 95 Cannevas : Ctrl shift C;
+#X text 56 8 Ctrl Shift 5 - Pour les commentaires. Il est de bon ton
+d'en mettre.;
+#X text 7 50 Ctrl Shift 1 - Fonction;
+#X text 7 70 Ctrl Shift 2 - Message;
+#X text 8 87 Ctrl Shift 3 - Stocke des nombres;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 8 0 29 0;
+#X connect 14 0 17 0;
+#X connect 15 0 29 1;
+#X connect 16 0 8 0;
+#X connect 17 0 12 0;
+#X connect 19 0 20 0;
+#X connect 20 0 23 1;
+#X connect 21 0 20 1;
+#X connect 22 0 19 0;
+#X connect 23 0 24 0;
+#X connect 24 0 12 0;
+#X connect 24 0 30 0;
+#X connect 25 0 24 1;
+#X connect 26 0 30 1;
+#X connect 28 0 26 0;
+#X connect 29 0 23 0;
+#X connect 30 0 9 0;
+#X connect 30 0 9 1;
+#X connect 31 0 28 0;
+#X connect 32 0 31 0;
+#X connect 36 0 37 0;
+#X connect 37 0 44 0;
+#X connect 44 0 45 0;
+#X connect 47 0 50 0;
+#X connect 48 0 47 0;
+#X connect 49 0 47 1;
+#X connect 53 0 55 0;
+#X connect 55 0 56 0;
+#X connect 55 0 64 0;
+#X connect 58 0 59 0;
+#X connect 59 0 56 0;
+#X connect 64 0 63 0;
+#X connect 65 0 62 0;
